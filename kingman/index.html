@@ -12,16 +12,17 @@
     <main>
       <header>
         <h1>KINGMAN</h1>
+        <p class="chance"></p>
+        <p class="guess"></p>
       </header>
-      <div class="word">
-        <span class="word__content">*</span>
-        <span class="word__content">*</span>
-        <span class="word__content">P</span>
-        <span class="word__content">*</span>
-        <span class="word__content">*</span>
-      </div>
-      <button>Reset</button>
+      <ul class="word"></ul>
+      <button class="reset">Reset</button>
     </main>
+    <div class="modal hide">
+      <div class="modal__content">
+        <p class="modal__body"></p>
+      </div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
