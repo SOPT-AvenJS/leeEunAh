@@ -1,0 +1,110 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  background-color: #030f43;
+  color: #40407a;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+}
+
+header {
+  position: relative;
+  top: -50px;
+
+  color: #7c73e6;
+
+  text-align: center;
+}
+
+header h1:first-child {
+  font-size: 50px;
+}
+
+.word {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60%;
+  height: 60px;
+  margin-top: 10px;
+
+  border-radius: 10px;
+  background-color: #40407a;
+  color: #ffffff;
+}
+
+.word__content {
+  margin: 0px 5px;
+
+  border-bottom: solid 1px white;
+  font-size: 1.5rem;
+}
+
+button {
+  position: relative;
+  bottom: -50px;
+
+  width: 5rem;
+  height: 2rem;
+
+  border: 0;
+  border-radius: 10px;
+  outline: 0;
+  background-color: #7c73e6;
+  color: white;
+  font-weight: bolder;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.modal.hide {
+  display: none;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: fit-content;
+  padding: 20px;
+
+  border-radius: 18px;
+  background-color: white;
+  font-size: 1.5rem;
+}
+
+img.kingman {
+  width: 250px;
+  height: 35%;
+}
