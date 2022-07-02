@@ -21,9 +21,8 @@ const image = $('.kingman');
 const modal = $('.modal');
 
 let quizWord = ''; // 가져오는 정답 단어
-let wordList = ''; // 소문자로 바꾼 리스트
-let tempWord = ''; // 정답 체크용 문자열
-let guessList = []; // 사용자가 눌렀던 단어 리스트
+let checkWord = ''; // 정답 체크용 문자열
+let guessWordList = []; // 사용자가 눌렀던 단어 리스트
 let count = 0; // 단어 + 3 횟수
 let imageCount = 0; // 이미지 횟수
 
@@ -36,7 +35,7 @@ async function requestWord() {
     .then((response) => response.json())
     .then((data) => data.puzzle)
     .catch((error) => console.log('요청 실패 : ', error));
-  return word;
+  return word.toLowerCase();
 }
 
 async function getQuizWord() {
@@ -48,9 +47,8 @@ async function getQuizWord() {
   modal.classList.add('hide');
 
   quizWord = word;
-  wordList = quizWord.toLowerCase().split('');
-  tempWord = quizWord.toLowerCase();
-  guessList = [];
+  checkWord = word;
+  guessWordList = [];
   count = quizWord.length + 3;
   imageCount = 0;
   return word;
@@ -58,21 +56,21 @@ async function getQuizWord() {
 
 function guessWord(e) {
   const guessAns = e.key;
-  guessList.push(guessAns);
+  guessWordList.push(guessAns);
 
-  if (wordList.includes(guessAns.toLowerCase())) {
-    while (tempWord.indexOf(guessAns.toLowerCase()) != -1) {
-      const idx = tempWord.indexOf(guessAns.toLowerCase());
+  if (quizWord.split('').includes(guessAns.toLowerCase())) {
+    while (checkWord.indexOf(guessAns.toLowerCase()) !== -1) {
+      const idx = checkWord.indexOf(guessAns.toLowerCase());
 
       const wordLi = $$('.word__content');
       wordLi[idx].innerHTML = `${guessAns.toLowerCase()}`;
 
-      const tempList = tempWord.split('');
+      const tempList = checkWord.split('');
       tempList[idx] = '*';
-      tempWord = tempList.join('');
+      checkWord = tempList.join('');
     }
 
-    if (tempWord === '*'.repeat(quizWord.length)) {
+    if (checkWord === '*'.repeat(quizWord.length)) {
       showModal('YOU WIN');
     }
   } else {
@@ -85,7 +83,7 @@ function guessWord(e) {
       showModal(`Answer: ${quizWord}`);
     }
   }
-  guessP.innerHTML = `You guess : ${guessList.join(', ')}`;
+  guessP.innerHTML = `You guess : ${guessWordList.join(', ')}`;
 }
 
 function showModal(sentence, loading = false) {
@@ -118,7 +116,7 @@ async function setGame() {
     wordDiv.removeChild(wordDiv.firstChild);
   }
 
-  for (let i = 0; i < wordList.length; i++) {
+  for (let i = 0; i < quizWord.split('').length; i++) {
     const li = document.createElement('li');
     li.className = 'word__content';
     li.innerHTML = '*';
@@ -130,5 +128,7 @@ async function setGame() {
   showImg();
 }
 
-setGame();
-resetGame();
+window.onload = () => {
+  setGame();
+  resetGame();
+};

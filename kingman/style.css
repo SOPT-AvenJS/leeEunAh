@@ -39,16 +39,16 @@ header h1:first-child {
   height: 60px;
   margin-top: 10px;
 
+  border-radius: 10px;
   background-color: #40407a;
   color: #ffffff;
-
-  border-radius: 10px;
 }
 
 .word__content {
-  font-size: 1.5rem;
-  border-bottom: solid 1px white;
   margin: 0px 5px;
+
+  border-bottom: solid 1px white;
+  font-size: 1.5rem;
 }
 
 button {
@@ -58,12 +58,11 @@ button {
   width: 5rem;
   height: 2rem;
 
-  color: white;
-  background-color: #7c73e6;
-
   border: 0;
-  outline: 0;
   border-radius: 10px;
+  outline: 0;
+  background-color: #7c73e6;
+  color: white;
   font-weight: bolder;
 }
 
@@ -92,19 +91,16 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-
-  width: fit-content;
-
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: white;
-  border-radius: 18px;
+  width: fit-content;
   padding: 20px;
 
+  border-radius: 18px;
+  background-color: white;
   font-size: 1.5rem;
 }
 
